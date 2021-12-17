@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(jenkins.riyenas.dev sonarqube.riyenas.dev)
+domains=(jenkins.riyenas.dev sonarqube.riyenas.dev grafana.riyenas.dev)
 rsa_key_size=4096
 data_path="./certbot"
 email="riyenas0925@gmail.com" # Adding a valid address is strongly recommended
