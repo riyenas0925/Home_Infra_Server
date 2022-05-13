@@ -1,0 +1,26 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq-cluster
+  namespace: rabbitmq-system
+spec:
+  replicas: 3
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+  rabbitmq:
+    additionalConfig: |
+      default_user= guest
+      default_pass = guest
+      default_user_tags.administrator = true
+    additionalPlugins:
+      - rabbitmq_mqtt
+      - rabbitmq_management
+  service:
+    type: LoadBalancer
+  persistence:
+    storageClassName: nfs-storageclass
