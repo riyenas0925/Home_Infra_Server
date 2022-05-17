@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: logging-server-ingress
+  namespace: kube-logging
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: kibana.riyenas.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kibana
+            port:
+              number: 5601
+  tls:
+  - hosts:
+    - kibana.riyenas.dev
+    secretName: letsencrypt-prod
