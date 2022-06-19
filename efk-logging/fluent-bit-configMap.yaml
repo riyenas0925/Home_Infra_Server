@@ -49,6 +49,7 @@ data:
         Host            ${FLUENT_ELASTICSEARCH_HOST}
         Port            ${FLUENT_ELASTICSEARCH_PORT}
         Logstash_Format On
+        Suppress_Type_Name On
         Replace_Dots    On
         Retry_Limit     False
   parsers.conf: |
